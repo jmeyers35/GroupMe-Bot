@@ -55,7 +55,7 @@ def web_hook():
                 text_model = markovify.NewlineText.from_json(model_json)
                 msg = text_model.make_sentence(tries=1000, max_overlap_ratio=MAX_OVERLAP_RATIO, max_overlap_total=MAX_OVERLAP_TOTAL)
                 send_message("Ryan bot says: " + msg)
-        elif person == 'yash':
+        elif person == 'yash' or person == 'qb1':
             with open('models/yash_punjabi_model.json') as f:
                 model_json = json.load(f)
                 text_model = markovify.NewlineText.from_json(model_json)
