@@ -71,7 +71,7 @@ def web_hook():
     
 
 def send_message(msg):
-    url = 'https://api.groupme.com/v3/bots/pos'
+    url = 'https://api.groupme.com/v3/bots/post'
 
     data = {
         "bot_id" : os.getenv("BOT_ID"),
