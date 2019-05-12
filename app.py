@@ -11,8 +11,8 @@ MAX_OVERLAP_TOTAL=10
 @app.route('/', methods=['POST'])
 def web_hook():
     message_text = request.get_json()['text']
-    if message_text.startswith('[Sim]'):
-        person = message_text.split('[Sim]')[1].lower().replace(" ", "")
+    if message_text.startswith('[Bot]'):
+        person = message_text.split('[Bot]')[1].lower().replace(" ", "")
         if person == 'anthony':
             with open('models/anthony_barnum_model.json') as f:
                 model_json = json.load(f)
