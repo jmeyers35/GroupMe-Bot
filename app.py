@@ -10,20 +10,20 @@ app = Flask(__name__)
 def web_hook():
     message_text = request.get_json()['text']
     if message_text.startswith('[Sim]'):
-        person = message_text.split('[Sim]')[0].lower()
+        person = message_text.split('[Sim]')[1].lower().replace(" ", "")
         if person == 'anthony':
             with open('models/anthony_barnum_model.json') as f:
                 model_json = json.load(f)
                 text_model = markovify.NewlineText.from_json(model_json)
                 msg = text_model.make_short_sentence(140, tries=1000, max_overlap_ratio=0.5, max_overlap_total=10)
                 send_message(msg)
-        elif person == 'chase' or 'eric':
+        elif person == 'chase' or person == 'eric':
             with open('models/chase_m_model.json') as f:
                 model_json = json.load(f)
                 text_model = markovify.NewlineText.from_json(model_json)
                 msg = text_model.make_short_sentence(140, tries=1000, max_overlap_ratio=0.5, max_overlap_total=10)
                 send_message(msg)
-        elif person == 'chris' or 'christopher':
+        elif person == 'chris' or person ==  'christopher':
             with open('models/christopher_densmore_model.json') as f:
                 model_json = json.load(f)
                 text_model = markovify.NewlineText.from_json(model_json)
@@ -54,7 +54,13 @@ def web_hook():
                 msg = text_model.make_short_sentence(140, tries=1000, max_overlap_ratio=0.5, max_overlap_total=10)
                 send_message(msg)
         elif person == 'yash':
-            with open('models/yash_punjabi.json') as f:
+            with open('models/yash_punjabi_model.json') as f:
+                model_json = json.load(f)
+                text_model = markovify.NewlineText.from_json(model_json)
+                msg = text_model.make_short_sentence(140, tries=1000, max_overlap_ratio=0.5, max_overlap_total=10)
+                send_message(msg)
+        elif person == 'jacob':
+            with open('models/jacob_meyers_model.json') as f:
                 model_json = json.load(f)
                 text_model = markovify.NewlineText.from_json(model_json)
                 msg = text_model.make_short_sentence(140, tries=1000, max_overlap_ratio=0.5, max_overlap_total=10)
