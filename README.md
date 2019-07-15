@@ -3,9 +3,10 @@
 A simple Flask app defined in app.py that uses [markovify](https://github.com/jsvine/markovify) to 
 generate sentences meant to imitate a particular person in a GroupMe group chat.
 
-The serialized markovify models are in the models directory as json files. These models were created with
-`create_models.py`. `create_models.py` expects a directory containing .txt files of the form
-person_name_messages.txt. The particular models I used are shown, but you can use create_models to
-create models based on your own corpi. The Flask app expects the models to be in a directory called 'models'.
+When a message is sent in the GroupMe chat, the message is sent to this service. If 
+the message is of the form "\[Bot\] \<name>", the service parses out the name, finds the appropriate model,
+and sends the message back to the chat.
 
-The corpi were generated using a [GroupMe util library](https://github.com/jmeyers35/GroupMe-Utils) I wrote.
+The JSON serialized Markovify models are read from a MongoDB database.
+
+The corpi were generated using a [custom GroupMe API wrapper](https://github.com/jmeyers35/GroupMe-Utils) I wrote.
