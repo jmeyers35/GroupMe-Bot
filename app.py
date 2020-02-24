@@ -7,7 +7,7 @@ import random
 import requests
 
 app = Flask(__name__)
-app.config["MONGO_URI"] = os.getenv()
+app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 mongo = PyMongo(app)
 MAX_OVERLAP_RATIO = 0.4
 MAX_OVERLAP_TOTAL=10
