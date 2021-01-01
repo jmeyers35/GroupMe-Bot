@@ -22,6 +22,10 @@ BLOOMBERG_QUOTES = [
     "As president, Mike will continue putting progress ahead of partisanship – and he will unite the country around a bold and achievable agenda."
 ]
 
+@app.route('/health')
+def health_check():
+    return 'ok', 200
+
 @app.route('/', methods=['POST'])
 def web_hook():
     message_text = request.get_json()['text']
